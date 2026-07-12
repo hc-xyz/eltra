@@ -5,34 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Eltra | Minimalistic fartlek run timer</title>
-    <!--<link rel="stylesheet" href="style-base.css" />-->
-    <style>
-      :root {
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+	<style>
+		/* --- SETUP & BASIC STUFF --- */
+
+:root {
   /* Spacing */
-  --space_0: 0.25rem; /* 4px   - utility to substitute 0 margins */
-  --space_1: 0.5rem;   /* 8px   - utility for tight paddings etc */
-  --space_2: 1rem;     /* 16px  - 1/2 line height, for closely related elements */
-  --space_4: 2rem;     /* 32px  - 1 line height, for related elements */
-  --space_8: 4rem;     /* 64px  - 2 line heights, for loosely related elements */
-  --space_16: 8rem;    /* 128px - 4 line heights, for unrelated elements */
+  --space_0: 0.25rem;
+  --space_1: 0.5rem;
+  --space_2: 1rem;
+  --space_4: 2rem;
+  --space_8: 4rem;
+  --space_16: 8rem;
 
   /* Colors */
   --color-light_main: #fff;
   --color-light_text: #000;
-  --color-light_bg-subtle: #D9D9D9;
-  --color-light_bg-emphasis: #474747;
+  --color-light_bg-1: #F9DBBD;
+  --color-light_bg-2: #E0F6F5;
   --color-dark_main: #000;
   --color-dark_text: #fff;
-  --color-dark_bg-subtle: #2E2E2E;
-  --color-dark_bg-emphasis: #8A8A8A;
+  --color-dark_bg-1: #6C3B09;
+  --color-dark_bg-2: #8A8A8A;
   --color-accent1: #C96D12;
   --color-accent2: #12C9C9;
-
-  /* Font Families */
-  --font_main: system-ui, sans-serif;
-  --font_heading-1: inherit;
-  --font_heading-2: ;
-
+  
   /* Font Sizes & Line Heights */
   --font-size_tiny: 1rem;
   --font-size_p: 1.5rem;
@@ -57,58 +57,151 @@ body{
 	overflow: hidden;
 	background-color: var(--color-light_main);
 }
+
+/* --- HEADER --- */
+
 .header{
-	display: flex;
+	position: fixed;
+	display:flex;
 	width: 100%;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 	padding: var(--space_1);
-	background-color: var(--color-light_bg-emphasis);
-	color: var(--color-light_main);
+	background-color: var(--color-light_bg-1);
+	color: var(--color-light_text);
 	font-size: var(--font-size_p);
 }
+
+.header-icontainer{
+	display: flex;
+	width: 3.5em;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.header-appname{
+  font-family: "Oswald", sans-serif;
+  letter-spacing: auto;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  transition: 0.05s ease-in-out;
+}
+
+.header-appname:hover{
+	font-weight: 700;
+	letter-spacing: 0.05em;
+}
+
+.header-helpBtn{
+	height: 1em;
+}
+
 .greeting{
-	background-color: var(--color-light_bg-subtle);
+	background-color: var(--color-light_bg-1);
 	color: var(--color-light_text);
 	font-size: var(--font-size_h1);
 }
 
-.greeting a{
-	font-size: var(--font-size_tiny);
-}
+/* --- MAIN FORM --- */
 
 .main-form{
+	padding-top: 4rem;
+	background-color: var(--color-light_bg-2);
+	font-family: "Rubik", sans-serif;
+	font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-    </style>
+.main-form > label{
+	font-size: 2rem;
+}
+
+.main-form input[type="number"]{
+	font-family: "Montserrat", sans-serif;
+	background: none;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 4rem;
+    text-align: center;
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+.main-form input[type="number"]::-webkit-inner-spin-button,
+.main-form input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+/* For Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.main-form input[type="range"]{
+  -webkit-appearance: none;
+  width: 18rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* --- Webkit Browsers --- */
+.main-form input[type="range"]::-webkit-slider-runnable-track{
+  height: 2px;
+  background: var(--color-light_text);
+}
+
+.main-form input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  height: 0.5rem;
+  width: 0.5rem;
+  background: var(--color-light_text);
+  margin-top: -0.5rem;
+}
+
+/* --- Firefox --- */
+.main-form input[type="range"]::-moz-range-track{
+  height: 2px;
+  background: var(--color-light_text);
+  border-radius: 0px;
+}
+
+.main-form input[type="range"]::-moz-range-thumb{
+  height: 0.5rem;
+  width: 0.5rem;
+  background: var(--color-light_text);
+  transition: 0.05s ease;
+}
+
+	</style>
   </head>
   <body id="screen">
 	<div class="header">
-		<h3>Eltra v1.0</h3>
-		<h3 id="settings">Gear symbol</h3>
+		<h3 class="header-appname">Eltra v1.0</h3>
+		<span class="header-icontainer">
+			<img class="header-helpBtn" id="infoBtn" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Information-icon.svg" alt="Information" />
+			<img class="header-helpBtn" id="aboutBtn" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Gear_8.svg" alt="Settings" />
+		</span>
 	</div>
 	<div class="greeting">
-		<h1>Good morning, User!</h1>
-		<a href="#" id="nameSet">Psst... Set your name here!</a>
+		<!--CONSIDER FOR FUTURE USE IF NECESSARY-->
 	</div>
-	<div class="main-form">
-		<form id="main" action="#" method="POST">
-			<label for="surgeCount">Number of surges:</label>
-			<input type="number" id="surgeCount" name="surgeCount" min="10" max="100" />
-			<input type="checkbox" id="infSurges" name="infSurges" />
-			<label for="scales">I want unlimited surges</label>
-			<label for="surgeNum">Time for each surge:</label>
-			<input type="number" id="surgeNum" name="surgeNum" min="10" max="100" />
-			<input type="range" id="surgeRange" name="surgeRange" min="10" max="100" />
-			<label for="recoNum">Recovery period:</label>
-			<input type="number" id="recoNum" name="recoNum" min="10" max="100" />
-			<input type="range" id="recoRange" name="recoRange" min="10" max="100" />
-			<button type="submit">Submit</button>
-		</form>
-	</div>
-	<div class="footer">
-		
-	</div>
+	<form class="main-form" id="main" action="#" method="POST">
+		<label for="surgeCount">Number of surges:</label><input type="number" id="surgeCount" name="surgeCount" min="10" max="100" />
+		<div></span><input type="checkbox" id="infSurges" name="infSurges" /><label for="scales">I want unlimited surges</label></div>
+		<label for="surgeNum">Time for each surge:</label><input type="number" id="surgeNum" name="surgeNum" min="10" max="100" />
+		<input type="range" id="surgeRange" name="surgeRange" min="10" max="100" /><label for="recoNum">Recovery period:</label>
+		<input type="number" id="recoNum" name="recoNum" min="10" max="100" /><input type="range" id="recoRange" name="recoRange" min="10" max="100" />
+		<button type="submit">Submit</button>
+	</form>
 	<script>
 		const surgeNum = document.getElementById('surgeNum');
 		const surgeRange = document.getElementById('surgeRange');
